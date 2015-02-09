@@ -1,0 +1,76 @@
+//
+//  main.cpp
+//  Homework1.2
+//
+//  Created by Muntaha Samad on 7/9/14.
+//  Copyright (c) 2014 Muntaha Samad. All rights reserved.
+//
+
+#include <iostream>
+using namespace std;
+
+class Fan
+{
+    public:
+        static const int SLOW = 1, MEDIUM = 2, FAST = 3;
+    private:
+        int speed;
+        bool on;
+        double radius;
+        string color;
+
+    public:
+    
+    Fan (int speed_ = SLOW, bool on_ = false, double radius_ = 5, string color_ = "blue")
+    {
+        speed = speed_;
+        on = on_;
+        radius = radius_;
+        color = color_;
+    }
+    
+    int getSpeed()
+    {
+        return speed;
+    }
+    bool getOn()
+    {
+        return on;
+    }
+    double getRadius()
+    {
+        return radius;
+    }
+    string getColor()
+    {
+        return color;
+    }
+    void setSpeed(int speed_)
+    {
+        speed = speed_;
+    }
+    void setOn(bool on_)
+    {
+        on = on_;
+    }
+    void setRadius(double radius_)
+    {
+        radius = radius_;
+    }
+    void setColor(string color_)
+    {
+        color = color_;
+    }
+    void display()
+    {
+        cout << speed << " " << on << " " << radius << " " << color << endl;
+    }
+};
+
+int main()
+{
+    Fan fan1(Fan::FAST, true, 10, "yellow"), fan2(Fan::MEDIUM, false);
+    fan1.display();
+    fan2.display();
+}
+
