@@ -1,0 +1,70 @@
+//
+//  main.cpp
+//  Homework 2.0
+//
+//  Created by Muntaha Samad on 7/15/14.
+//  Copyright (c) 2014 Muntaha Samad. All rights reserved.
+//
+
+#include <iostream>
+using namespace std;
+
+class Auto
+{
+private:
+    
+    string owner_name;
+    string auto_type;
+    int maximum_speed;
+    int gasoline_tank_capacity;
+    
+public:
+    
+    void set_owner_name(string owner_name_)
+    {
+        owner_name = owner_name_;
+    }
+    void set_auto_type(string auto_type_)
+    {
+        auto_type = auto_type_;
+    }
+    void set_maximum_speed(int maximum_speed_)
+    {
+        maximum_speed = maximum_speed_;
+    }
+    void set_gasoline_tank_capacity(int gasoline_tank_capacity_)
+    {
+        gasoline_tank_capacity = gasoline_tank_capacity_;
+    }
+    void display()
+    {
+        cout << owner_name << " " << auto_type << " " << maximum_speed << " " << gasoline_tank_capacity << endl;
+    }
+    Auto(string owner_name_, string auto_type_)
+    {
+        owner_name = owner_name_;
+        auto_type = auto_type_;
+        maximum_speed = 0;
+        gasoline_tank_capacity = 0;
+    }
+    Auto()
+    {
+        owner_name = " ";
+        auto_type = " ";
+        maximum_speed = 0;
+        gasoline_tank_capacity = 0;
+    }
+    
+};
+
+
+
+int main()
+{
+    Auto auto1("Muntaha", "Honda");
+    auto1.set_maximum_speed(100);
+    auto1.set_gasoline_tank_capacity(26);
+    auto1.display();
+    return 0;
+}
+
