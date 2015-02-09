@@ -1,0 +1,72 @@
+//
+//  main.cpp
+//  Homework1.1
+//
+//  Created by Muntaha Samad on 7/8/14.
+//  Copyright (c) 2014 Muntaha Samad. All rights reserved.
+//
+
+#include <iostream>
+using namespace std;
+
+void in_place_even(int arr[], int length)
+{
+    int i, val, val2, j;
+    int finallen = length;
+    for(i=0; i<length-1;i++)
+    {
+        val = arr[i];
+        val2 = arr[length-1];
+        arr[length-1] = val;
+        arr[i] = val2;
+        length--;
+        
+    }
+    
+    for (j=0; j<finallen; j++)
+    {
+        cout << arr[j];
+        cout << " ";
+    }
+    cout << "\n";
+}
+void in_place_odd(int arr[], int length)
+{
+    int i, val, val2, j;
+    int finallen = length;
+    for(i=0; i<(length-2);i++)
+    {
+        val = arr[i];
+        val2 = arr[length-1];
+        arr[length-1] = val;
+        arr[i] = val2;
+        length --;
+        
+    }
+    for (j=0; j<finallen; j++)
+    {
+        cout << arr[j];
+        cout << " ";
+    }
+    cout << "\n";
+   
+}
+
+int main()
+{
+    string type, str2 = "even", str3 = "odd";
+    int even[10] = {1,2,3,4,5,6,7,8,9,10};
+    int odd[9] = {1,2,3,4,5,6,7,8,9};
+    cout << "Do you want to rearrange and even or an odd array? ";
+    cin >> type;
+    if (type.compare(str2)==0)
+    {
+         in_place_even(even, 10);
+    }
+    else if(type.compare(str3)==0)
+    {
+        in_place_odd(odd, 9);
+    }
+    
+}
+
