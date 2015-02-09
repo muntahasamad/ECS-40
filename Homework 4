@@ -1,0 +1,147 @@
+//
+//  main.cpp
+//  Homework 4.0
+//
+//  Created by Muntaha Samad on 8/6/14.
+//  Copyright (c) 2014 Muntaha Samad. All rights reserved.
+//
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+
+
+class File
+{
+private:
+    ifstream instream;
+    ofstream outstream;
+public:
+    void ReadFile(const string &infile, const string &outfile);
+    void DoubleSpace(const string &infile,const string &outfile);
+    void ReadOdd(const string &infile);
+    void reverse(char *string);
+    
+};
+
+
+void File::ReadFile(const string &infile,const string &outfile)
+{
+    string line;
+    
+    instream.open(infile);
+    if (instream.fail())
+    {
+        cout<< "Input file opening failed\n";
+        exit(1);
+    }
+    outstream.open(outfile);
+    if (outstream.fail())
+    {
+        cout<< "Output file opening failed\n";
+        exit(1);
+    }
+    while (! instream.eof() )
+    {
+        getline (instream,line);
+        outstream << line << endl;
+    }
+    instream.close();
+    outstream.close();
+    
+}
+
+void File::DoubleSpace(const string &infile,const string &outfile)
+{
+    string line;
+    
+    instream.open(infile);
+    if (instream.fail())
+    {
+        cout<< "Input file opening failed\n";
+        exit(1);
+    }
+    outstream.open(outfile);
+    if (outstream.fail())
+    {
+        cout<< "Output file opening failed\n";
+        exit(1);
+    }
+    while (! instream.eof() )
+    {
+        getline (instream,line);
+        outstream << line << endl << endl;
+    }
+    instream.close();
+    outstream.close();
+    
+}
+
+void File::ReadOdd(const string &infile)
+{
+    int i=0;
+    string line;
+    
+    instream.open(infile);
+    if (instream.fail())
+    {
+        cout<< "Input file opening failed\n";
+        exit(1);
+    }
+    while (! instream.eof() )
+    {
+        if ((i%2) == 0)
+        {
+            getline (instream,line);
+            cout<< line << endl;
+        }
+        else
+        {
+           getline (instream,line);
+        }
+        i++;
+    }
+    instream.close();
+    
+}
+void File::reverse(char *string)
+{
+    if(*string)
+    {
+        reverse(string+1);
+        cout << *string;
+    }
+}
+
+
+
+int main()
+{
+    File homework;
+    string input1, output1, input2, output2, input3;
+    cout << "Part 1: Read in a file and write it to another document\n";
+    cout << "Input file name: ";
+    cin >> input1;
+    cout << "Output file name: ";
+    cin >> output1;
+    homework.ReadFile(input1,output1);
+    cout << "Part 2: Double Space a document\n";
+    cout << "Input file name: ";
+    cin >> input2;
+    cout << "Output file name: ";
+    cin >> output2;
+    homework.DoubleSpace(input2,output2);
+    cout << "Part 3: Print odd lines\n";
+    cout << "File name: ";
+    cin >> input3;
+    homework.ReadOdd(input3);
+    cout << "Part 4: Recursively reverse print a string" << endl;
+    char f[] = "This is the last assignment";
+    homework.reverse(f);
+    cout << endl;
+    return 0;
+    
+    
+}
+
+
