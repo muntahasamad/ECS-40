@@ -1,0 +1,92 @@
+//
+//  main.cpp
+//  Homework 3
+//
+//  Created by Muntaha Samad on 7/30/14.
+//  Copyright (c) 2014 Muntaha Samad. All rights reserved.
+//
+
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+
+class Stack
+{
+private:
+    int top;
+    char letter;
+    char array[50];
+    
+public:
+    char pop();
+    void push(char ch);
+    bool isempty();
+    
+
+    Stack()
+    {
+        letter = ' ';
+        top = -1;
+      
+    }
+};
+
+char Stack::pop()
+{
+   if (isempty()!= true)
+   {
+       letter = array[top];
+       array[top] = ' ';
+       top = top-1;
+   }
+    else
+    {
+        cout << "There are no values left in the array to remove.\n";
+        top = -1;
+    }
+    return letter;
+}
+bool Stack::isempty()
+{
+    return (top == -1);
+}
+
+
+void Stack::push(char ch)
+{
+    if (top<50)
+    {
+        array[top+1]= ch;
+        top = top+1;
+    }
+    else
+    {
+        cout << "This array is full, cannot push anymore values\n";
+    }
+   
+    
+}
+
+int main()
+{
+    Stack stack;
+    char ch,letter;
+    cout << "Enter letters and then enter the letter \"D\" when done.\n";
+    cin >> ch;
+    while (ch != 'D')
+    {
+        stack.push(ch);
+        cin >> ch;
+    }
+    cout << "\nThese are the characters that were popped" << endl;
+    while (stack.isempty()!= true)
+    {
+        letter = stack.pop();
+        cout << letter << " ";
+        
+    }
+    cout << endl;
+    return 0;
+}
+
