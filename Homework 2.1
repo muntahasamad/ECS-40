@@ -1,0 +1,144 @@
+//
+//  main.cpp
+//  Homework 2.1
+//
+//  Created by Muntaha Samad on 7/15/14.
+//  Copyright (c) 2014 Muntaha Samad. All rights reserved.
+//
+
+#include <iostream>
+using namespace std;
+
+class Auto
+{
+protected:
+    
+    string owner_name;
+    string auto_type;
+    int maximum_speed;
+    int gasoline_tank_capacity;
+    
+public:
+    
+    void set_owner_name(string owner_name_)
+    {
+        owner_name = owner_name_;
+    }
+    void set_auto_type(string auto_type_)
+    {
+        auto_type = auto_type_;
+    }
+    void set_maximum_speed(int maximum_speed_)
+    {
+        maximum_speed = maximum_speed_;
+    }
+    void set_gasoline_tank_capacity(int gasoline_tank_capacity_)
+    {
+        gasoline_tank_capacity = gasoline_tank_capacity_;
+    }
+    void display()
+    {
+        cout << owner_name << " " << auto_type << " " << maximum_speed << " " << gasoline_tank_capacity << endl;
+    }
+    Auto(string owner_name_, string auto_type_)
+    {
+        owner_name = owner_name_;
+        auto_type = auto_type_;
+        maximum_speed = 0;
+        gasoline_tank_capacity = 0;
+    }
+    Auto()
+    {
+        owner_name = " ";
+        auto_type = " ";
+        maximum_speed = 0;
+        gasoline_tank_capacity = 0;
+    }
+    
+};
+
+class Truck : public Auto
+{
+private:
+    
+    bool fourxfour;
+    bool covered_bed;
+    
+public:
+    
+    void set_owner_name(string owner_name_)
+    {
+        owner_name = owner_name_;
+    }
+    void set_auto_type(string auto_type_)
+    {
+        auto_type = auto_type_;
+    }
+    void set_maximum_speed(int maximum_speed_)
+    {
+        maximum_speed = maximum_speed_;
+    }
+    void set_gasoline_tank_capacity(int gasoline_tank_capacity_)
+    {
+        gasoline_tank_capacity = gasoline_tank_capacity_;
+    }
+    void set_fourxfour(bool fourxfour_)
+    {
+        fourxfour = fourxfour_;
+    }
+    void set_covered_bed(bool covered_bed_)
+    {
+        covered_bed = covered_bed_;
+    }
+   int  get_maximum_speed()
+    {
+        return maximum_speed;
+    }
+    int get_gasoline_tank_capacity()
+    {
+        return gasoline_tank_capacity;
+    }
+    
+    void display()
+    {
+        cout << owner_name << " " << auto_type << " " << maximum_speed << " " << gasoline_tank_capacity << " " << fourxfour << " " << covered_bed << endl;
+    }
+    Truck()
+    {
+        fourxfour = false;
+        covered_bed = false;
+    }
+    friend bool operator ==(Truck& truck1, Truck& truck2)
+    {
+        return ((truck1.get_maximum_speed() == truck2.get_maximum_speed()) && (truck1.get_gasoline_tank_capacity() == truck2.get_gasoline_tank_capacity()));
+    }
+    
+};
+
+int main()
+{
+    Truck truck1, truck2;
+    truck1.set_owner_name("Muntaha");
+    truck1.set_auto_type("Ford");
+    truck1.set_maximum_speed(200);
+    truck1.set_gasoline_tank_capacity(13);
+    truck1.set_fourxfour(true);
+    truck1.display();
+    truck2.set_owner_name("Rebecca");
+    truck2.set_auto_type("Dodge");
+    truck2.set_maximum_speed(212);
+    truck2.set_gasoline_tank_capacity(16);
+    truck2.set_fourxfour(true);
+    truck2.set_covered_bed(true);
+    truck2.display();
+    if (truck1 == truck2)
+    {
+        cout << "This is the same car";
+    }
+    else
+    {
+        cout << "This is not the same car" << endl;
+    }
+    return 0;
+}
+
