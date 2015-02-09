@@ -1,0 +1,40 @@
+//
+//  main.cpp
+//  Homework1
+//
+//  Created by Muntaha Samad on 7/8/14.
+//  Copyright (c) 2014 Muntaha Samad. All rights reserved.
+//
+
+#include <iostream>
+using namespace std;
+
+double sumMatrix(int m[][4])
+{
+    double sum = 0;
+    int i,j;
+    for(i=0; i<4; i++)
+    {
+        for (j=0; j<4; j++)
+        {
+            sum += m[i][j];
+        }
+    }
+    return sum;
+}
+
+int main()
+
+{
+    double final;
+    int testArray[4][4] =
+    {
+        {1,2,3,4,},
+        {6,7,8,9, },
+        {11,12,13,14 }
+    };
+    final = sumMatrix(testArray);
+    cout << final << endl;
+    
+}
+
